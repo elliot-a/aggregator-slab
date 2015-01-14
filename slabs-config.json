@@ -1,7 +1,6 @@
 {
-  "name" : "page scraper",
-  "type" : "source",
+  "name" : "aggregator",
+  "type" : "utility",
   "connectionsIn" : 1,
-  "connectionsOut" : 3,
-  "values" : ["mentions", "titleMentions"]
+  "connectionsOut" : 3
 }

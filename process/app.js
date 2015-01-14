@@ -8,33 +8,26 @@ var scrap   = require('scrap');
  * getData - passes in the config object from the client.
  * This function MUST exist and MUST return a promise.
  */
-exports.getData = function(settings) {
+exports.getData = function(obj) {
 
-    // this is the object saved from your the /input portion of the slab.
-    var searchTerm  = settings.searchTerm;
-    var siteUrl     = settings.siteUrl;
-
-    // Slabs works on a promise system - for this we use the excellent 'Q' library.
     var deferred = Q.defer();
 
-    var data = {
-        mentions : 0
-    };
+    var settings = obj.settings;
+    var data = obj.data;
 
-    scrap(siteUrl, function(err, $) {
+    var output = {};
 
-        var pageContents = $('body').html();
-        var res = pageContents.match('/'+searchTerm+'/gi');
-        if(res){
-            // return your data like this...
-            data.mentions = res.length;
-            deferred.resolve(data);
-        }else{
-            // return your data like this...
-            deferred.resolve(data);
+    for(var i = 0; i<data.length; i++){
+
+        var dataObj = data[i];
+
+        for(prop in dataObj){
+            output[prop] = dataObj[prop];
         }
 
-    });
+    }
+
+    deferred.resolve(output);
 
 
     // Always return your promise here.

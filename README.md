@@ -1,7 +1,7 @@
-page-scraper
+aggregator
 =============
 
-##A page scraping module for use with slabs.io.
+##A simple aggregation module for use with slabs.io.
 
 Before use run :
 ```
